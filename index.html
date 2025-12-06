@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster - Todo App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- BUG #1: Login form has no error handling -->
+        <div id="login-section" class="section">
+            <h1>TaskMaster</h1>
+            <p class="subtitle">Your Personal Task Manager</p>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p id="login-error" class="error"></p>
+        </div>
+
+        <!-- Main App Section (hidden by default) -->
+        <div id="app-section" class="section hidden">
+            <header>
+                <h1>My Tasks</h1>
+                <!-- BUG #6: Logout button doesn't work -->
+                <button id="logout-btn" class="btn btn-secondary">Logout</button>
+            </header>
+
+            <!-- BUG #3: Add task form missing validation -->
+            <form id="task-form">
+                <input type="text" id="task-input" placeholder="Enter a new task...">
+                <input type="date" id="task-due-date">
+                <select id="task-priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Add Task</button>
+            </form>
+
+            <!-- BUG #7: Filter doesn't work -->
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+
+            <!-- BUG #8: Task count shows wrong number -->
+            <div class="task-stats">
+                <span id="task-count">0 tasks</span>
+                <span id="completed-count">0 completed</span>
+            </div>
+
+            <ul id="task-list"></ul>
+
+            <!-- BUG #11: Clear completed doesn't work -->
+            <button id="clear-completed" class="btn btn-danger">Clear Completed</button>
+        </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
